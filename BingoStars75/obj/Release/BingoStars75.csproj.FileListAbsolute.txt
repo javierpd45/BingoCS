@@ -1,0 +1,11 @@
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\bin\Release\BingoStars75.exe.config
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\bin\Release\BingoStars75.exe
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\bin\Release\BingoStars75.pdb
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.csproj.AssemblyReference.cache
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.csproj.SuggestedBindingRedirects.cache
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.Inicio.resources
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.Properties.Resources.resources
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.csproj.GenerateResource.cache
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.exe
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Release\BingoStars75.pdb
