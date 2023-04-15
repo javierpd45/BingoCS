@@ -14,6 +14,7 @@ namespace BingoStars75
     public partial class Juego : Form
     {
         private int[,] matriz = new int[5,6];
+        private List<int> numerosGenerados = new List<int>();
 
         public Juego(int[,] contenidoMatriz)
         {
@@ -65,9 +66,15 @@ namespace BingoStars75
         {            
             Random  numero = new Random();
             string letra = "";
-            int aleatorio;
+            int aleatorio;            
 
-            aleatorio = numero.Next(1, 76);
+            do
+            {
+                aleatorio = numero.Next(1, 76);
+                if (numerosGenerados.Count() > 73) numerosGenerados.Clear();
+            } while (numerosGenerados.Contains(aleatorio));
+            
+            numerosGenerados.Add(aleatorio);
 
             if (aleatorio > 0 && aleatorio < 16) letra = "B";
             if (aleatorio > 15 && aleatorio < 31) letra = "I";
