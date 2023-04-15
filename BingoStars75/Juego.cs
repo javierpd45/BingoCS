@@ -77,11 +77,17 @@ namespace BingoStars75
 
             textBox1.Clear();
             textBox1.Text = letra + aleatorio.ToString();
-
-            dataGridView3.Columns.Clear();
-            DataGridViewColumn columna3 = new DataGridViewColumn(new DataGridViewTextBoxCell());
-            columna3.Width = 75;
-            dataGridView3.Columns.Add(columna3);
+            
+            for (int filas = 0; filas < 5; filas++) 
+            {
+                for (int columnas = 1;columnas < 6;columnas++) 
+                {
+                    if (matriz[filas, columnas] == aleatorio)
+                    {
+                        dataGridView2[filas, columnas].Value = "--> X <--";
+                    }    
+                }
+            }
         }
     }
 }
