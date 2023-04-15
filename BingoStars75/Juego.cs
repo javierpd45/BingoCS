@@ -50,6 +50,7 @@ namespace BingoStars75
                     dataGridView2[filas, columnas].Value = matriz[filas, columnas];
                 }
             }
+            dataGridView2[2, 3].Value = "Free";
         }        
 
         private void Juego_Load(object sender, EventArgs e)
@@ -89,7 +90,7 @@ namespace BingoStars75
             {
                 for (int columnas = 1;columnas < 6;columnas++) 
                 {
-                    if (matriz[filas, columnas] == aleatorio)
+                    if (matriz[filas, columnas] == aleatorio && matriz[filas, columnas] != matriz[2, 3])
                     {
                         dataGridView2[filas, columnas].Value = "--> X <--";
                     }    

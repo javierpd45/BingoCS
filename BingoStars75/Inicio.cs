@@ -130,6 +130,8 @@ namespace BingoStars75
                     matriz[filas, columnas] = matrizRandom[filas, columnas];
                 }
             }
+
+            dataGridView1[2, 3].Value = "Free";
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
