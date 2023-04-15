@@ -30,10 +30,9 @@ namespace BingoStars75
 
             for (int i = 0; i < 5; i++)
             {
-                DataGridViewColumn columna1 = new DataGridViewColumn(new DataGridViewTextBoxCell());
-                //columna1.Name = (i + 1).ToString();
-                columna1.Width = 75;
-                dataGridView2.Columns.Add(columna1);
+                DataGridViewColumn columna2 = new DataGridViewColumn(new DataGridViewTextBoxCell());
+                columna2.Width = 75;
+                dataGridView2.Columns.Add(columna2);
             }
             dataGridView2.Rows.Add(5);
 
@@ -50,9 +49,7 @@ namespace BingoStars75
                     dataGridView2[filas, columnas].Value = matriz[filas, columnas];
                 }
             }
-        }
-
-        
+        }        
 
         private void Juego_Load(object sender, EventArgs e)
         {
@@ -62,6 +59,29 @@ namespace BingoStars75
         private void btnATRAS_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSiguienteNumero_Click(object sender, EventArgs e)
+        {            
+            Random  numero = new Random();
+            string letra = "";
+            int aleatorio;
+
+            aleatorio = numero.Next(1, 76);
+
+            if (aleatorio > 0 && aleatorio < 16) letra = "B";
+            if (aleatorio > 15 && aleatorio < 31) letra = "I";
+            if (aleatorio > 30 && aleatorio < 46) letra = "N";
+            if (aleatorio > 45 && aleatorio < 61) letra = "G";
+            if (aleatorio > 60 && aleatorio < 76) letra = "O";
+
+            textBox1.Clear();
+            textBox1.Text = letra + aleatorio.ToString();
+
+            dataGridView3.Columns.Clear();
+            DataGridViewColumn columna3 = new DataGridViewColumn(new DataGridViewTextBoxCell());
+            columna3.Width = 75;
+            dataGridView3.Columns.Add(columna3);
         }
     }
 }
