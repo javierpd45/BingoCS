@@ -12,7 +12,8 @@ namespace BingoStars75
 {
     public partial class Inicio : Form
     {
-
+        private int[,] matriz = new int[5,6];
+        
         public Inicio()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace BingoStars75
             for (int i = 0; i < 5; i++)
             {
                 DataGridViewColumn columna1 = new DataGridViewColumn(new DataGridViewTextBoxCell());
-                columna1.Name = (i + 1).ToString();
+                //columna1.Name = (i + 1).ToString();
                 columna1.Width = 75;
                 dataGridView1.Columns.Add(columna1);
             }
@@ -126,13 +127,15 @@ namespace BingoStars75
                 for(int columnas = 1; columnas < 6; columnas++)
                 {
                     dataGridView1[filas, columnas].Value = matrizRandom[filas, columnas];
+                    matriz[filas, columnas] = matrizRandom[filas, columnas];
                 }
             }
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-
+            using (Juego pantallaJuego = new Juego(matriz))                
+                pantallaJuego.ShowDialog();
         }        
     }
 }

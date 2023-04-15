@@ -9,3 +9,4 @@
 \\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Debug\BingoStars75.csproj.CoreCompileInputs.cache
 \\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Debug\BingoStars75.exe
 \\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Debug\BingoStars75.pdb
+\\wsl.localhost\Ubuntu\home\javierpd45\personalProjects\proyectoFinalDesarrollo1\BingoStars75\obj\Debug\BingoStars75.Juego.resources
