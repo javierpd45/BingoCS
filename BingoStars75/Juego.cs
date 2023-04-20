@@ -127,7 +127,8 @@ namespace BingoStars75
             vozDiscurso.SelectVoiceByHints(VoiceGender.Male);
                         
             vozDiscurso.Speak("Bingo");
-            sonidoDeVictoria.Play();
+            label1.Text = "Ganaste el premio!";
+            sonidoDeVictoria.Play();            
         }
     }
 }
