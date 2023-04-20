@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
+using System.Media;
 
 namespace BingoStars75
 {
@@ -16,7 +17,8 @@ namespace BingoStars75
     {
         private int[,] matriz = new int[5,6];
         private List<int> numerosGenerados = new List<int>();
-        private SpeechSynthesizer vozNumeros = new SpeechSynthesizer();
+        private SpeechSynthesizer vozDiscurso = new SpeechSynthesizer();
+        private SoundPlayer sonidoDeVictoria;
 
         public Juego(int[,] contenidoMatriz)
         {
@@ -30,6 +32,11 @@ namespace BingoStars75
                     matriz[filas, columnas] = contenidoMatriz[filas, columnas];
                 }
             }
+
+            // URL del sonido
+            sonidoDeVictoria = new SoundPlayer();
+            sonidoDeVictoria.SoundLocation = "hesDoneIt.wav";
+            //sonidoDeVictoria = new SoundPlayer(soundLocation: @"hesDoneIt.wav");
 
 
             // Generando la tabla que contendrá la matriz
@@ -97,10 +104,10 @@ namespace BingoStars75
             textBox1.Text = letra + aleatorio.ToString();
 
             // Voz femenina
-            vozNumeros.SelectVoiceByHints(VoiceGender.Female);
+            vozDiscurso.SelectVoiceByHints(VoiceGender.Female);
 
             // Discurso de numeros
-            vozNumeros.Speak(textBox1.Text);
+            vozDiscurso.Speak(textBox1.Text);
             
             // Cambia el numero en el carton por una --> X <-- si es el numero que sale
             for (int filas = 0; filas < 5; filas++) 
@@ -113,6 +120,14 @@ namespace BingoStars75
                     }    
                 }
             }
+        }
+
+        private void btnBingo_Click(object sender, EventArgs e)
+        {
+            vozDiscurso.SelectVoiceByHints(VoiceGender.Male);
+                        
+            vozDiscurso.Speak("Bingo");
+            sonidoDeVictoria.Play();
         }
     }
 }
