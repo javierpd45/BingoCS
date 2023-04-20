@@ -8,6 +8,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech.Synthesis;
 
 namespace BingoStars75
 {
@@ -15,9 +16,12 @@ namespace BingoStars75
     {
         private int[,] matriz = new int[5,6];
         private List<int> numerosGenerados = new List<int>();
+        private SpeechSynthesizer vozNumeros = new SpeechSynthesizer();
 
         public Juego(int[,] contenidoMatriz)
         {
+            // Se trae la matriz generada en la pantalla de Inicio
+            // Se utiliza el constructor para que se genere 1 sola vez
             InitializeComponent();
             for (int filas = 0; filas < 5; filas++)
             {
@@ -27,6 +31,8 @@ namespace BingoStars75
                 }
             }
 
+
+            // Generando la tabla que contendrá la matriz
             dataGridView2.Columns.Clear();            
 
             for (int i = 0; i < 5; i++)
@@ -43,6 +49,7 @@ namespace BingoStars75
             dataGridView2[3, 0].Value = "G";
             dataGridView2[4, 0].Value = "O";
 
+            // Agregando valores a las filas y columnas
             for (int filas = 0; filas < 5; filas++)
             {
                 for (int columnas = 1; columnas < 6; columnas++)
@@ -69,23 +76,33 @@ namespace BingoStars75
             string letra = "";
             int aleatorio;            
 
+            // Se comparan los numeros con lo de una lista que contiene los numeros repetidos
             do
             {
                 aleatorio = numero.Next(1, 76);
                 if (numerosGenerados.Count() > 73) numerosGenerados.Clear();
             } while (numerosGenerados.Contains(aleatorio));
             
-            numerosGenerados.Add(aleatorio);
+            numerosGenerados.Add(aleatorio); // Los numeros se agregan a una lista para no repetirse
 
+            // Añadiendo las letras a los numeros
             if (aleatorio > 0 && aleatorio < 16) letra = "B";
             if (aleatorio > 15 && aleatorio < 31) letra = "I";
             if (aleatorio > 30 && aleatorio < 46) letra = "N";
             if (aleatorio > 45 && aleatorio < 61) letra = "G";
             if (aleatorio > 60 && aleatorio < 76) letra = "O";
 
+            // Se limpia la caja de texto luego de cada numero
             textBox1.Clear();
             textBox1.Text = letra + aleatorio.ToString();
+
+            // Voz femenina
+            vozNumeros.SelectVoiceByHints(VoiceGender.Female);
+
+            // Discurso de numeros
+            vozNumeros.Speak(textBox1.Text);
             
+            // Cambia el numero en el carton por una --> X <-- si es el numero que sale
             for (int filas = 0; filas < 5; filas++) 
             {
                 for (int columnas = 1;columnas < 6;columnas++) 

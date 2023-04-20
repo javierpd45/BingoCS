@@ -29,10 +29,14 @@ namespace BingoStars75
             this.Close();
         }
 
+        // Aqui se genera el carton
+        // Los numeros del carton son aleatorios
         private void btnGenerarCarton_Click(object sender, EventArgs e)
         {
+            // Se limpia la matriz cada vez que se genera una nueva
             dataGridView1.Columns.Clear();
 
+            // Creacion de la tabla que contendra el carton/matriz
             for (int i = 0; i < 5; i++)
             {
                 DataGridViewColumn columna1 = new DataGridViewColumn(new DataGridViewTextBoxCell());
@@ -42,6 +46,7 @@ namespace BingoStars75
             }
             dataGridView1.Rows.Add(5);
 
+            // Añadiendo la palabra BINGO en la parte superior del carton
             dataGridView1[0, 0].Value = "B";
             dataGridView1[1, 0].Value = "I";
             dataGridView1[2, 0].Value = "N";
@@ -53,16 +58,22 @@ namespace BingoStars75
             int numeroRandom;
             List<int> numerosGenerados = new List<int>();
 
+            // Generando la matriz/carton aleatoria
             for (int filas = 0; filas < 5; filas++)
             {
                 for (int columnas = 1; columnas < 6; columnas++)
                 {
                     switch (filas)
                     {
+                        // Numeros en la columna 0
+                        // Columna que tiene la B
+                        // Los numeros están entre el 1 y 15
                         case 0:
 
                             do
                             {
+                                // El metodo Next toma un valor menos n - 1
+                                // En su valor superior del intervalo
                                 numeroRandom = random.Next(1, 16);
                             } while (numerosGenerados.Contains(numeroRandom));
 
@@ -122,6 +133,9 @@ namespace BingoStars75
                 }
             }
 
+            // Colocando los valores en la tabla
+            // Los valores tambien se guardan en una matriz que es utilizada para
+            // pasar los valores la siguiente pantalla
             for (int filas = 0; filas < 5; filas++)
             {
                 for(int columnas = 1; columnas < 6; columnas++)
@@ -131,9 +145,10 @@ namespace BingoStars75
                 }
             }
 
-            dataGridView1[2, 3].Value = "Free";
+            dataGridView1[2, 3].Value = "Free"; // Valor por defecto en la casilla central de un carton
         }
 
+        // Boton que sirve para continuar a la siguiente pantalla
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             using (Juego pantallaJuego = new Juego(matriz))                
