@@ -173,6 +173,11 @@ namespace BingoStars75
                 using (Juego pantallaJuego = new Juego(matriz))
                     pantallaJuego.ShowDialog();
             }
-        }    
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
