@@ -242,9 +242,7 @@ namespace BingoStars75
         /// </summary>
         private void ReproducirSonidoClick()
         {
-            string rutaDelSonido = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Recursos\clickBoton.wav");
-            SoundPlayer player = new SoundPlayer(rutaDelSonido);
-            player.Play();
+            SystemSounds.Beep.Play();
         }
     }   
 }

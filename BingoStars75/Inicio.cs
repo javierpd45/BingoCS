@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Media;
+using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace BingoStars75
 {
@@ -13,7 +15,12 @@ namespace BingoStars75
         /// </summary>
         private int[,] matriz = new int[5,6];
         private bool botonHizoClick = false;
-        
+
+        // Atributos para controlar la musica de fondo
+        private string rutaMusicaFondo = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Recursos\musicaDeFondo.wav");
+        SoundPlayer musicaFondo;
+        private bool sonandoMusica = false;
+
         public Inicio()
         {
             InitializeComponent();
@@ -21,7 +28,10 @@ namespace BingoStars75
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-
+            // Iniciar la musica de fondo en un loop
+            musicaFondo = new SoundPlayer(rutaMusicaFondo);
+            musicaFondo.PlayLooping();
+            sonandoMusica = true;
         }
 
         /// <summary>
@@ -173,7 +183,7 @@ namespace BingoStars75
             {
                 using (Juego pantallaJuego = new Juego(matriz))
                     pantallaJuego.ShowDialog();
-                label1.Text = "                     ¡A jugar!";
+                label1.Text = "¡Genere un cartón y empieza a jugar!";
             }
             else
             {
@@ -186,10 +196,29 @@ namespace BingoStars75
         /// </summary>
         private void ReproducirSonidoClick()
         {
-            string rutaDelSonido = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Recursos\clickBoton.wav");
-            SoundPlayer player = new SoundPlayer(rutaDelSonido);
-            player.Play();
+            SystemSounds.Beep.Play();
         }
 
+        /// <summary>
+        /// Manegar evento de click en el boton para activar o desactivar musica
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(sonandoMusica)
+            {
+                musicaFondo.Stop();
+                sonandoMusica = false;
+
+                button4.BackColor = System.Drawing.Color.PaleVioletRed;
+            } else
+            {
+                musicaFondo.PlayLooping();
+                sonandoMusica = true;
+
+                button4.BackColor = System.Drawing.Color.Aquamarine;
+            }
+        }
     }
 }
