@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Media;
@@ -16,9 +10,13 @@ namespace BingoStars75
 {
     public partial class Juego : Form
     {
+        /// <summary>Matriz para guardar los números aleatorios del cartón </summary>
         private int[,] matriz = new int[5,6];
+        /// <summary>Lista de los numeros aleatorios ya generados</summary>
         private List<int> numerosGenerados = new List<int>();
+        /// <summary>Sintetizador de la voz que dicta los numeros</summary>
         private SpeechSynthesizer vozDiscurso = new SpeechSynthesizer();
+        /// <summary>Reproductor de sonido</summary>
         private SoundPlayer sonidoDeVictoria;
 
         public Juego(int[,] contenidoMatriz)
@@ -73,11 +71,21 @@ namespace BingoStars75
 
         }
 
+        /// <summary>
+        /// Manegar el evento del click del boton para salir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnATRAS_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Manegar el evento del click del boton para presentar el siguiente numero en el carton del Bingo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSiguienteNumero_Click(object sender, EventArgs e)
         {            
             Random  numero = new Random();

@@ -12,7 +12,11 @@ namespace BingoStars75
 {
     public partial class Inicio : Form
     {
+        /// <summary>
+        /// Matriz para guardar los números aleatorios del cartón
+        /// </summary>
         private int[,] matriz = new int[5,6];
+        private bool botonHizoClick = false;
         
         public Inicio()
         {
@@ -24,13 +28,21 @@ namespace BingoStars75
 
         }
 
+        /// <summary>
+        /// Manegar el evento del click del boton para salir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSALIR_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Environment.Exit(0);
         }
 
-        // Aqui se genera el carton
-        // Los numeros del carton son aleatorios
+        /// <summary>
+        /// Manegar el evento del click del boton para generar el carton, los numeros del carton son aleatorios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerarCarton_Click(object sender, EventArgs e)
         {
             // Se limpia la matriz cada vez que se genera una nueva
@@ -146,13 +158,27 @@ namespace BingoStars75
             }
 
             dataGridView1[2, 3].Value = "Free"; // Valor por defecto en la casilla central de un carton
+            botonHizoClick = true;
         }
 
-        // Boton que sirve para continuar a la siguiente pantalla
+        /// <summary>
+        /// Manegar evento del boton para continuar a la siguiente pantalla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            using (Juego pantallaJuego = new Juego(matriz))                
-                pantallaJuego.ShowDialog();
-        }        
+            if (botonHizoClick)
+            {
+                using (Juego pantallaJuego = new Juego(matriz))
+                    pantallaJuego.ShowDialog();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }
