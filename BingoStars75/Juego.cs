@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Media;
+using System.IO;
 
 namespace BingoStars75
 {
@@ -35,8 +36,8 @@ namespace BingoStars75
 
             // URL del sonido
             sonidoDeVictoria = new SoundPlayer();
-            sonidoDeVictoria.SoundLocation = "/Recursos/hesDoneIt.wav";
-            //sonidoDeVictoria = new SoundPlayer(soundLocation: @"hesDoneIt.wav");
+            sonidoDeVictoria.SoundLocation = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Recursos\hesDoneIt.wav");
+            //sonidoDeVictoria = new SoundPlayer(soundLocation: );
 
 
             // Generando la tabla que contendrá la matriz
