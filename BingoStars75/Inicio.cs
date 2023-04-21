@@ -172,6 +172,11 @@ namespace BingoStars75
             {
                 using (Juego pantallaJuego = new Juego(matriz))
                     pantallaJuego.ShowDialog();
+                label1.Text = "                     ¡A jugar!";
+            }
+            else
+            {
+                label1.Text = "Debe generar un cartón para jugar";
             }
         }
 
