@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BingoStars75
@@ -10,6 +16,7 @@ namespace BingoStars75
         /// Matriz para guardar los números aleatorios del cartón
         /// </summary>
         private int[,] matriz = new int[5,6];
+        private bool botonHizoClick = false;
         
         public Inicio()
         {
@@ -151,6 +158,7 @@ namespace BingoStars75
             }
 
             dataGridView1[2, 3].Value = "Free"; // Valor por defecto en la casilla central de un carton
+            botonHizoClick = true;
         }
 
         /// <summary>
@@ -160,8 +168,11 @@ namespace BingoStars75
         /// <param name="e"></param>
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            using (Juego pantallaJuego = new Juego(matriz))                
-                pantallaJuego.ShowDialog();
-        }        
+            if (botonHizoClick)
+            {
+                using (Juego pantallaJuego = new Juego(matriz))
+                    pantallaJuego.ShowDialog();
+            }
+        }    
     }
 }
