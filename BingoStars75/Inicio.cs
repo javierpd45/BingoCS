@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace BingoStars75
@@ -35,6 +31,7 @@ namespace BingoStars75
         /// <param name="e"></param>
         private void btnSALIR_Click(object sender, EventArgs e)
         {
+            ReproducirSonidoClick();
             Environment.Exit(0);
         }
 
@@ -45,6 +42,8 @@ namespace BingoStars75
         /// <param name="e"></param>
         private void btnGenerarCarton_Click(object sender, EventArgs e)
         {
+            ReproducirSonidoClick();
+
             // Se limpia la matriz cada vez que se genera una nueva
             dataGridView1.Columns.Clear();
 
@@ -168,6 +167,8 @@ namespace BingoStars75
         /// <param name="e"></param>
         private void btnContinuar_Click(object sender, EventArgs e)
         {
+            ReproducirSonidoClick();
+
             if (botonHizoClick)
             {
                 using (Juego pantallaJuego = new Juego(matriz))
@@ -180,9 +181,14 @@ namespace BingoStars75
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Reproduce un sonido de click, por lo general es usado en botones
+        /// </summary>
+        private void ReproducirSonidoClick()
         {
-
+            string rutaDelSonido = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Recursos\clickBoton.wav");
+            SoundPlayer player = new SoundPlayer(rutaDelSonido);
+            player.Play();
         }
 
     }

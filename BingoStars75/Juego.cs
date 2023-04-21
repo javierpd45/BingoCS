@@ -78,6 +78,7 @@ namespace BingoStars75
         /// <param name="e"></param>
         private void btnATRAS_Click(object sender, EventArgs e)
         {
+            ReproducirSonidoClick();
             this.Close();
         }
 
@@ -88,6 +89,8 @@ namespace BingoStars75
         /// <param name="e"></param>
         private void btnSiguienteNumero_Click(object sender, EventArgs e)
         {            
+            ReproducirSonidoClick();
+
             Random  numero = new Random();
             string letra = "";
             int aleatorio;            
@@ -232,6 +235,16 @@ namespace BingoStars75
             {
                 MessageBox.Show("Aún no has completado el Bingo. Sigue jugando.", "Bingo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        /// <summary>
+        /// Reproduce un sonido de click, por lo general es usado en botones
+        /// </summary>
+        private void ReproducirSonidoClick()
+        {
+            string rutaDelSonido = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Recursos\clickBoton.wav");
+            SoundPlayer player = new SoundPlayer(rutaDelSonido);
+            player.Play();
         }
     }   
 }
