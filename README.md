@@ -1,5 +1,5 @@
 ﻿# Bingo Stars 75
-Bingo Stards 75 es un juego de Bingo para un proyecto final de la materia de Desarrollo de Software I, desarrollado en C# utilizando la biblioteca de Windows Forms de framework .NET, y creado con pasión y mucha dedicación.
+Bingo Stards 75 es un juego de Bingo para un proyecto final de la materia de Desarrollo de Software I, desarrollado en C# utilizando la biblioteca de Windows Forms del framework .NET, y creado con pasión y mucha dedicación.
 
 ## Características
 - Cartones de Bingo generados al azar 📄
@@ -7,6 +7,7 @@ Bingo Stards 75 es un juego de Bingo para un proyecto final de la materia de Des
 - Speech Voice integrado 🗣️
 - Detección automática de líneas de bingo y cartones ganadores 🔎
 - Interfaz de usuario intuitiva y fácil de usar 💡
+- Música de fondo 🎶
 - Hecho con ❤️
 
 ## Requisitos del sistema
