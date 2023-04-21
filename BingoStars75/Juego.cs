@@ -35,7 +35,7 @@ namespace BingoStars75
 
             // URL del sonido
             sonidoDeVictoria = new SoundPlayer();
-            sonidoDeVictoria.SoundLocation = "hesDoneIt.wav";
+            sonidoDeVictoria.SoundLocation = "/Recursos/hesDoneIt.wav";
             //sonidoDeVictoria = new SoundPlayer(soundLocation: @"hesDoneIt.wav");
 
 
