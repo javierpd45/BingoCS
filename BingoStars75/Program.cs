@@ -9,7 +9,7 @@ namespace BingoStars75
     internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// La entrada principal de la aplicacion
         /// </summary>
         [STAThread]
         static void Main()
