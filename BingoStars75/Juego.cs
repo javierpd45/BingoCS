@@ -123,13 +123,107 @@ namespace BingoStars75
             }
         }
 
-        private void btnBingo_Click(object sender, EventArgs e)
+                        private void btnBingo_Click(object sender, EventArgs e)
         {
-            vozDiscurso.SelectVoiceByHints(VoiceGender.Male);
-                        
-            vozDiscurso.Speak("Bingo");
-            label1.Text = "Ganaste el premio!";
-            sonidoDeVictoria.Play();            
+                    // Verificar si se cumplen las condiciones de ganar
+            bool bingo = false;
+
+            // Verificar filas
+            for (int fila = 0; fila < 5; fila++)
+            {
+                if (fila == 2) // Excluir la fila 3
+                {
+                    // Verificar solo las celdas en las columnas 1, 2, 4 y 5
+                    if (dataGridView2[fila, 1].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 2].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 4].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 5].Value.ToString() == "--> X <--")
+                    {
+                        bingo = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    // Verificar todas las celdas en las columnas 1 a 5
+                    if (dataGridView2[fila, 1].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 2].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 3].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 4].Value.ToString() == "--> X <--" &&
+                        dataGridView2[fila, 5].Value.ToString() == "--> X <--")
+                    {
+                        bingo = true;
+                        break;
+                    }
+                }
+            }
+
+
+            // Verificar columnas
+            if (!bingo)
+            {
+                for (int columna = 0; columna < 5; columna++)
+                {
+                    // Comenzar desde la segunda fila (índice 1) en lugar de la primera (índice 0)
+                    for (int fila = 1; fila < 5; fila++)
+                    {
+                        // Saltar la fila con el índice 3 en la columna con el índice 2
+                        if (columna == 2 && fila == 3)
+                        {
+                            continue;
+                        }
+
+                        if (dataGridView2[columna, fila].Value.ToString() != "--> X <--")
+                        {
+                            // Si una celda no contiene la combinación específica, salir del bucle
+                            break;
+                        }
+
+                        // Si se llega a la última fila y todas las celdas contienen la combinación, establecer "bingo" como verdadera
+                        if (fila == 4)
+                        {
+                            bingo = true;
+                        }
+                    }
+                }
+            }   
+                
+
+            // Verificar diagonal principal
+            if (!bingo)
+            {
+                if (dataGridView2[0, 1].Value.ToString() == "--> X <--" &&
+                    dataGridView2[1, 2].Value.ToString() == "--> X <--" &&
+                    dataGridView2[3, 4].Value.ToString() == "--> X <--" &&
+                    dataGridView2[4, 5].Value.ToString() == "--> X <--")
+                {
+                    bingo = true;
+                }
+            }
+
+            // Verificar diagonal secundaria
+            if (!bingo)
+            {
+                if (dataGridView2[0, 5].Value.ToString() == "--> X <--" &&
+                    dataGridView2[1, 4].Value.ToString() == "--> X <--" &&
+                    dataGridView2[3, 2].Value.ToString() == "--> X <--" &&
+                    dataGridView2[4, 1].Value.ToString() == "--> X <--")
+                {
+                    bingo = true;
+                }
+            }
+
+            if (bingo)
+            {
+                vozDiscurso.SelectVoiceByHints(VoiceGender.Male);
+                vozDiscurso.Speak("Bingo");
+                label1.Text = "¡Ganaste el premio!";
+                sonidoDeVictoria.Play();
+            }
+            else
+            {
+                MessageBox.Show("Aún no has completado el Bingo. Sigue jugando.", "Bingo Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-    }
+    }   
 }
